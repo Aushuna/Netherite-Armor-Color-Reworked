@@ -32,5 +32,5 @@ All Credit Goes to the original Creator of the mod for forge and neoforge.
 
 
 
-Note: this was remade and recoded using AidenDreamy's forge/neoforge version as the base and coding it to work with fabric.
+Note: this was remade and recoded using AidenDreamy's forge/neoforge version as the base and coded it to work with fabric.
 
