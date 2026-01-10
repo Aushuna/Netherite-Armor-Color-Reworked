@@ -13,6 +13,7 @@ N = netherite armor piece
 O = ore
 
 
+### Smithing table recipie (add color)
 
 S N O = Colored Netherite Armor
 
