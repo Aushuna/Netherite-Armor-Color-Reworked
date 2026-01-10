@@ -7,7 +7,9 @@ Netherite Armor Color Reworked is a Minecraft mod that adds 9 colored Netherite 
 
 
 S = Smithing tablet
+
 N = netherite armor piece  
+
 O = ore
 
 
