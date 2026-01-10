@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "aidendreamymod:block/smoothamethiste",
+    "up": "aidendreamymod:block/smoothamethiste",
+    "north": "aidendreamymod:block/smoothamethiste",
+    "east": "aidendreamymod:block/smoothamethiste",
+    "south": "aidendreamymod:block/smoothamethiste",
+    "west": "aidendreamymod:block/smoothamethiste",
+    "particle": "aidendreamymod:block/smoothamethiste"
+  },
+  "render_type": "solid"
+}

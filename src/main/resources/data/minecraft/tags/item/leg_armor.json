@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "aidendreamymod:netherite_copper_dye_leggings",
+    "aidendreamymod:netherite_dark_dye_leggings",
+    "aidendreamymod:netherite_emerald_dye_leggings",
+    "aidendreamymod:netherite_gold_dye_leggings",
+    "aidendreamymod:netherite_ame_dye_leggings",
+    "aidendreamymod:netherite_aqua_dye_leggings",
+    "aidendreamymod:netherite_blue_dye_leggings",
+    "aidendreamymod:netherite_redstone_dye_leggings",
+    "aidendreamymod:netherite_quartz_dye_leggings",
+    "minecraft:netherite_leggings"
+  ]
+}

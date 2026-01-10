@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": { "item": "minecraft:netherite_upgrade_smithing_template" },
+  "base": { "tag": "minecraft:leg_armor" },
+  "addition": { "item": "minecraft:quartz_block" },
+  "result": { "id": "aidendreamymod:netherite_quartz_dye_leggings" }
+}

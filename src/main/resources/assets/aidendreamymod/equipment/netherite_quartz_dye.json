@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "aidendreamymod:netherite_quartz_dye"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "aidendreamymod:netherite_quartz_dye"
+      }
+    ]
+  }
+}

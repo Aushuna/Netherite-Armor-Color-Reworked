@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "aidendreamymod:netherite_copper_dye_boots",
+    "aidendreamymod:netherite_dark_dye_boots",
+    "aidendreamymod:netherite_emerald_dye_boots",
+    "aidendreamymod:netherite_gold_dye_boots",
+    "aidendreamymod:netherite_ame_dye_boots",
+    "aidendreamymod:netherite_aqua_dye_boots",
+    "aidendreamymod:netherite_blue_dye_boots",
+    "aidendreamymod:netherite_redstone_dye_boots",
+    "aidendreamymod:netherite_quartz_dye_boots",
+    "minecraft:netherite_boots"
+  ]
+}

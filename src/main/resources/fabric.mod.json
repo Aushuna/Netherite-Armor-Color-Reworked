@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "aidendreamymod",
+  "version": "1.0.0",
+
+  "name": "Netherite Armor Color Reworked",
+  "description": "Adds colored Netherite armor variants using smithing upgrades.",
+  "authors": [
+    "AidenDreamy"
+  ],
+  "contact": {
+    "sources": ""
+  },
+
+  "license": "All Rights Reserved",
+  "icon": "assets/aidendreamymod/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.aidendreamy.aidendreamymod.AidenDreamyMod"
+    ]
+  },
+
+  "mixins": [],
+
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": "1.21.1",
+    "java": ">=21"
+  }
+}
+

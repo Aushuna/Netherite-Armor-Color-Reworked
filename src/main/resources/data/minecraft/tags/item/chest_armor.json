@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "aidendreamymod:netherite_copper_dye_chestplate",
+    "aidendreamymod:netherite_dark_dye_chestplate",
+    "aidendreamymod:netherite_emerald_dye_chestplate",
+    "aidendreamymod:netherite_gold_dye_chestplate",
+    "aidendreamymod:netherite_ame_dye_chestplate",
+    "aidendreamymod:netherite_aqua_dye_chestplate",
+    "aidendreamymod:netherite_blue_dye_chestplate",
+    "aidendreamymod:netherite_redstone_dye_chestplate",
+    "aidendreamymod:netherite_quartz_dye_chestplate",
+    "minecraft:netherite_chestplate"
+  ]
+}
