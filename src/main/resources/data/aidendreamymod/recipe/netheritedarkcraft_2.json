@@ -1,7 +1,10 @@
 {
   "type": "minecraft:smithing_transform",
-  "template": { "item": "minecraft:netherite_upgrade_smithing_template" },
-  "base": { "tag": "minecraft:head_armor" },
-  "addition": { "item": "minecraft:netherite_block" },
-  "result": { "id": "aidendreamymod:netherite_dark_dye_helmet" }
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "#minecraft:head_armor",
+  "addition": "minecraft:netherite_block",
+  "result": {
+    "id": "aidendreamymod:netherite_dark_dye_helmet"
+  }
 }
+

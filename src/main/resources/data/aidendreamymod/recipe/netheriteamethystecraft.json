@@ -1,7 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "template": { "item": "minecraft:netherite_upgrade_smithing_template" },
-  "base": { "tag": "minecraft:chest_armor" },
-  "addition": { "item": "aidendreamymod:smooth_amethyste" },
-  "result": { "id": "aidendreamymod:netherite_ame_dye_chestplate" }
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "#minecraft:chest_armor",
+  "addition": "aidendreamymod:smooth_amethyste",
+  "result": {
+    "id": "aidendreamymod:netherite_ame_dye_chestplate"
+  }
 }

@@ -1,7 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "template": { "item": "minecraft:netherite_upgrade_smithing_template" },
-  "base": { "tag": "minecraft:leg_armor" },
-  "addition": { "item": "minecraft:gold_block" },
-  "result": { "id": "aidendreamymod:netherite_gold_dye_leggings" }
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "#minecraft:leg_armor",
+  "addition": "minecraft:gold_block",
+  "result": {
+    "id": "aidendreamymod:netherite_gold_dye_leggings"
+  }
 }

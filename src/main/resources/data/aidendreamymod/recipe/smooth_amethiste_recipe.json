@@ -7,10 +7,11 @@
     "aaa"
   ],
   "key": {
-    "a": { "item": "minecraft:amethyst_block" }
+    "a": "minecraft:amethyst_block"
   },
   "result": {
     "id": "aidendreamymod:smooth_amethyste",
     "count": 1
   }
 }
+

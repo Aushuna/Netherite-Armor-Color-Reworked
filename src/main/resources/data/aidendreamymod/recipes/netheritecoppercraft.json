@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "minecraft:netherite_chestplate",
+  "addition": "minecraft:waxed_copper_block",
+  "result": "aidendreamymod:netherite_copper_dye_chestplate"
+}

@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "aidendreamymod:emeraldnetherite" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "aidendreamymod:emeraldnetherite" }
+    ]
+  }
+}

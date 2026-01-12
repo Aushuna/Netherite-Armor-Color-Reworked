@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "minecraft:netherite_helmet",
+  "addition": "minecraft:emerald_block",
+  "result": "aidendreamymod:netherite_emerald_dye_helmet"
+}

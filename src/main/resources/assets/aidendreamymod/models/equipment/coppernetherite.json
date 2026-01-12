@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [
+      { "texture": "aidendreamymod:coppernetherite" }
+    ],
+    "humanoid_leggings": [
+      { "texture": "aidendreamymod:coppernetherite" }
+    ]
+  }
+}
