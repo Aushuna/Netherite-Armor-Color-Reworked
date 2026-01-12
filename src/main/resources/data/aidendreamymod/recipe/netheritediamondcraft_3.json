@@ -1,7 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "template": { "item": "minecraft:netherite_upgrade_smithing_template" },
-  "base": { "tag": "minecraft:leg_armor" },
-  "addition": { "item": "minecraft:diamond_block" },
-  "result": { "id": "aidendreamymod:netherite_aqua_dye_leggings" }
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "#minecraft:leg_armor",
+  "addition": "minecraft:diamond_block",
+  "result": {
+    "id": "aidendreamymod:netherite_aqua_dye_leggings"
+  }
 }

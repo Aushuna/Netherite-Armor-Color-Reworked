@@ -1,7 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "template": { "item": "minecraft:netherite_upgrade_smithing_template" },
-  "base": { "tag": "minecraft:head_armor" },
-  "addition": { "item": "aidendreamymod:smooth_amethyste" },
-  "result": { "id": "aidendreamymod:netherite_ame_dye_helmet" }
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "#minecraft:head_armor",
+  "addition": "aidendreamymod:smooth_amethyste",
+  "result": {
+    "id": "aidendreamymod:netherite_ame_dye_helmet"
+  }
 }

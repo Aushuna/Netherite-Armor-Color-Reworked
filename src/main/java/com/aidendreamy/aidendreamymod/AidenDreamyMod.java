@@ -6,82 +6,63 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 
-import net.minecraft.recipe.Ingredient;
+import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.item.equipment.ArmorMaterials;
+import net.minecraft.item.equipment.EquipmentType;
 
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.entry.RegistryEntry;
-
-import net.minecraft.sound.SoundEvents;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 
 import net.minecraft.util.Identifier;
-
-import java.util.EnumMap;
-import java.util.List;
-import java.util.function.Supplier;
 
 public class AidenDreamyMod implements ModInitializer {
     public static final String MODID = "aidendreamymod";
 
     // -------------------- Block: smooth_amethyste --------------------
-    // You have block tags + block loot table referencing this, so it must be a real block.
-    public static final Block SMOOTH_AMETHYSTE_BLOCK = Registry.register(
-            Registries.BLOCK,
-            Identifier.of(MODID, "smooth_amethyste"),
-            new Block(AbstractBlock.Settings.copy(Blocks.AMETHYST_BLOCK))
-    );
+    // 1.21.2+ requires that Settings have a registry key set before constructing the Block/Item.
+    private static final Identifier SMOOTH_AMETHYSTE_ID = Identifier.of(MODID, "smooth_amethyste");
+    private static final RegistryKey<Block> SMOOTH_AMETHYSTE_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, SMOOTH_AMETHYSTE_ID);
 
-    // -------------------- Armor materials mapped to YOUR worn-texture PNG base names --------------------
-    // These will look for:
-    // assets/aidendreamymod/textures/models/armor/<base>_layer_1.png
-    // assets/aidendreamymod/textures/models/armor/<base>_layer_2.png
-    public static final RegistryEntry<ArmorMaterial> AME_MATERIAL =
-            registerNetheriteLikeMaterial("amenetherite");
+    public static final Block SMOOTH_AMETHYSTE_BLOCK =
+            Blocks.register(
+                    SMOOTH_AMETHYSTE_KEY,
+                    Block::new,
+                    AbstractBlock.Settings.copy(Blocks.AMETHYST_BLOCK)
+            );
 
-    public static final RegistryEntry<ArmorMaterial> BLUE_MATERIAL =
-            registerNetheriteLikeMaterial("lappisnetherite");
-
-    public static final RegistryEntry<ArmorMaterial> GOLD_MATERIAL =
-            registerNetheriteLikeMaterial("goldnetherite");
-
-    // NOTE: Your file name has triple 'p': copppernetherite_layer_1/2.png
-    public static final RegistryEntry<ArmorMaterial> COPPER_MATERIAL =
-            registerNetheriteLikeMaterial("copppernetherite");
-
-    public static final RegistryEntry<ArmorMaterial> DARK_MATERIAL =
-            registerNetheriteLikeMaterial("darknetherite");
-
-    public static final RegistryEntry<ArmorMaterial> AQUA_MATERIAL =
-            registerNetheriteLikeMaterial("aquanetherite");
-
-    public static final RegistryEntry<ArmorMaterial> EMERALD_MATERIAL =
-            registerNetheriteLikeMaterial("emeraldnetherite");
-
-    // You said:
-    // nnetherite_layer_1/2.png (used for quartz)
-    // rednetherite_layer_1/2.png (used for redstone)
-    public static final RegistryEntry<ArmorMaterial> QUARTZ_MATERIAL =
-            registerNetheriteLikeMaterial("nnetherite");
-
-    public static final RegistryEntry<ArmorMaterial> REDSTONE_MATERIAL =
-            registerNetheriteLikeMaterial("rednetherite");
+    // -------------------- Armor materials (Minecraft 1.21.2+) --------------------
+    // Each ArmorMaterial has a modelId (Identifier). In 1.21.2+, that modelId maps to:
+    //
+    // assets/aidendreamymod/models/equipment/<path>.json
+    // which then points to textures:
+    // assets/aidendreamymod/textures/entity/equipment/humanoid/<path>.png
+    // assets/aidendreamymod/textures/entity/equipment/humanoid_leggings/<path>.png
+    //
+    // IMPORTANT:
+    // - textureBase here controls your WORN armor look (equipment model + PNG names)
+    // - registerSet(...) controls your ITEM ids (recipes/models/item/*.json)
+    public static final ArmorMaterial AME_MATERIAL = netheriteLike("amenetherite");
+    public static final ArmorMaterial BLUE_MATERIAL = netheriteLike("lapisnetherite");
+    public static final ArmorMaterial GOLD_MATERIAL = netheriteLike("goldnetherite");
+    public static final ArmorMaterial COPPER_MATERIAL = netheriteLike("coppernetherite");
+    public static final ArmorMaterial DARK_MATERIAL = netheriteLike("darknetherite");
+    public static final ArmorMaterial AQUA_MATERIAL = netheriteLike("aquanetherite");
+    public static final ArmorMaterial EMERALD_MATERIAL = netheriteLike("emeraldnetherite");
+    public static final ArmorMaterial QUARTZ_MATERIAL = netheriteLike("quartznetherite");
+    public static final ArmorMaterial REDSTONE_MATERIAL = netheriteLike("rednetherite");
 
     @Override
     public void onInitialize() {
-        // Register block item (inventory + recipes use the item form)
-        Registry.register(
-                Registries.ITEM,
-                Identifier.of(MODID, "smooth_amethyste"),
-                new BlockItem(SMOOTH_AMETHYSTE_BLOCK, new Item.Settings())
-        );
+        // Registers the matching BlockItem (and handles required registry key wiring)
+        Items.register(SMOOTH_AMETHYSTE_BLOCK);
 
-        // Register armor sets (item IDs must match your recipe result IDs)
+        // Register armor sets (item IDs MUST match your recipe result IDs + models/item/*.json)
         registerSet("netherite_ame_dye", AME_MATERIAL);
         registerSet("netherite_blue_dye", BLUE_MATERIAL);
         registerSet("netherite_gold_dye", GOLD_MATERIAL);
@@ -93,63 +74,49 @@ public class AidenDreamyMod implements ModInitializer {
         registerSet("netherite_redstone_dye", REDSTONE_MATERIAL);
     }
 
-    private static void registerSet(String prefix, RegistryEntry<ArmorMaterial> material) {
-        registerArmor(prefix + "_helmet", ArmorItem.Type.HELMET, material);
-        registerArmor(prefix + "_chestplate", ArmorItem.Type.CHESTPLATE, material);
-        registerArmor(prefix + "_leggings", ArmorItem.Type.LEGGINGS, material);
-        registerArmor(prefix + "_boots", ArmorItem.Type.BOOTS, material);
-    }
-
-    private static void registerArmor(String id, ArmorItem.Type type, RegistryEntry<ArmorMaterial> material) {
-        Registry.register(
-                Registries.ITEM,
-                Identifier.of(MODID, id),
-                new ArmorItem(material, type, new Item.Settings().fireproof())
-        );
+    private static void registerSet(String prefix, ArmorMaterial material) {
+        registerArmor(prefix + "_helmet", EquipmentType.HELMET, material);
+        registerArmor(prefix + "_chestplate", EquipmentType.CHESTPLATE, material);
+        registerArmor(prefix + "_leggings", EquipmentType.LEGGINGS, material);
+        registerArmor(prefix + "_boots", EquipmentType.BOOTS, material);
     }
 
     /**
-     * Registers an ArmorMaterial with Netherite-like stats but custom worn-armor textures.
-     *
-     * Texture lookup is driven by the ArmorMaterial layer id.
-     * With base = "aquanetherite", Minecraft will use:
-     * - assets/aidendreamymod/textures/models/armor/aquanetherite_layer_1.png
-     * - assets/aidendreamymod/textures/models/armor/aquanetherite_layer_2.png
+     * 1.21.2+ requires item Settings to have the item's RegistryKey set (registryKey(...)),
+     * otherwise you'll crash at runtime with "Item id not set".
      */
-    private static RegistryEntry<ArmorMaterial> registerNetheriteLikeMaterial(String textureBase) {
-        // Netherite defense values: helmet 3, chest 8, legs 6, boots 3
-        EnumMap<ArmorItem.Type, Integer> defense = new EnumMap<>(ArmorItem.Type.class);
-        defense.put(ArmorItem.Type.HELMET, 3);
-        defense.put(ArmorItem.Type.CHESTPLATE, 8);
-        defense.put(ArmorItem.Type.LEGGINGS, 6);
-        defense.put(ArmorItem.Type.BOOTS, 3);
+    private static void registerArmor(String id, EquipmentType type, ArmorMaterial material) {
+        Identifier itemId = Identifier.of(MODID, id);
+        RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, itemId);
 
-        int enchantability = 15;
-        float toughness = 3.0F;
-        float knockbackResistance = 0.1F;
+        Item.Settings settings = material
+                .applySettings(new Item.Settings().fireproof(), type)
+                .registryKey(itemKey);
 
-        Supplier<Ingredient> repairIngredient = () -> Ingredient.ofItems(Items.NETHERITE_INGOT);
+        Registry.register(Registries.ITEM, itemKey, new Item(settings));
+    }
 
-        // One layer is enough for standard armor rendering
-        List<ArmorMaterial.Layer> layers = List.of(
-                new ArmorMaterial.Layer(Identifier.of(MODID, textureBase))
-        );
+    /**
+     * Creates a Netherite-like ArmorMaterial but with a custom modelId (texture base).
+     *
+     * With textureBase = "amenetherite", Minecraft will look for:
+     * - assets/aidendreamymod/models/equipment/amenetherite.json
+     * Which should reference textures:
+     * - textures/entity/equipment/humanoid/amenetherite.png
+     * - textures/entity/equipment/humanoid_leggings/amenetherite.png
+     */
+    private static ArmorMaterial netheriteLike(String textureBase) {
+        ArmorMaterial base = ArmorMaterials.NETHERITE; // vanilla netherite stats/repair/sound
 
-        ArmorMaterial material = new ArmorMaterial(
-                defense,
-                enchantability,
-                SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-                repairIngredient,
-                layers,
-                toughness,
-                knockbackResistance
-        );
-
-        // Register the material so ArmorItem can hold a RegistryEntry<ArmorMaterial>
-        return Registry.registerReference(
-                Registries.ARMOR_MATERIAL,
-                Identifier.of(MODID, textureBase),
-                material
+        return new ArmorMaterial(
+                base.durability(),
+                base.defense(),
+                base.enchantmentValue(),
+                base.equipSound(),
+                base.toughness(),
+                base.knockbackResistance(),
+                base.repairIngredient(),
+                Identifier.of(MODID, textureBase) // modelId / texture base
         );
     }
 }

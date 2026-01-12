@@ -1,7 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "template": { "item": "minecraft:netherite_upgrade_smithing_template" },
-  "base": { "tag": "minecraft:chest_armor" },
-  "addition": { "item": "minecraft:gold_block" },
-  "result": { "id": "aidendreamymod:netherite_gold_dye_chestplate" }
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "base": "#minecraft:chest_armor",
+  "addition": "minecraft:gold_block",
+  "result": {
+    "id": "aidendreamymod:netherite_gold_dye_chestplate"
+  }
 }
